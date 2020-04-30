@@ -1,0 +1,11 @@
+package ex1;
+
+/**
+ *
+ * @author LAPTOP ASUS
+ */
+public class Main {
+	public static void main(String []args) {
+		Coordinate coordinate = new Coordinate();
+	}
+}
