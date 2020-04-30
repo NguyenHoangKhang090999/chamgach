@@ -1,0 +1,223 @@
+package ex1;
+
+/**
+ *
+ * @author LAPTOP ASUS
+ */
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import javax.swing.*;
+
+public class GraphicsDemo extends JPanel implements MouseListener {
+
+	public int a = 200, x0;
+	public int b = 200, x1;
+        public int c = 200, y0;
+        public int d = 200, y1;
+
+	JLabel label = new JLabel();
+
+	public GraphicsDemo() {
+
+	}
+
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		this.setBackground(Color.WHITE);
+		this.setBounds(200, 0, 500, 500);
+
+		label.setBounds(100, 410, 250, 40);
+		label.setText("Coordinate Axes (Double click to draw)");
+		this.add(label);
+
+		Graphics2D g2d = (Graphics2D) g;
+
+		Axis(g2d);
+		this.addMouseListener(this);
+                
+		if (a % 5 == 1)
+			a = a - 1;
+		if (a % 5 == 2)
+			a = a - 2;
+		if (a % 5 == 3)
+			a = a + 2;
+		if (a % 5 == 4)
+			a = a + 1;
+
+		if (b % 5 == 1)
+			b= b - 1;
+		if (b % 5 == 2)
+			b = b - 2;
+		if (b % 5 == 3)
+			b = b + 2;
+		if (b % 5 == 4)
+			b = b + 1;
+                
+                if (c % 5 == 1)
+			c= c - 1;
+		if (c % 5 == 2)
+			c = c - 2;
+		if (c % 5 == 3)
+			c = c + 2;
+		if (c % 5 == 4)
+			c = c + 1;
+                
+                if (d % 5 == 1)
+			d= d - 1;
+		if (d % 5 == 2)
+			d = d - 2;
+		if (d % 5 == 3)
+			d = d + 2;
+		if (d % 5 == 4)
+			d = d + 1;
+                
+               
+              
+		if (a % 5 == 0 && b % 5 == 0 && c % 5 == 0 && d % 5 == 0) {
+			
+                        DDA(g2d);
+		}
+
+	}
+        
+        	public void drawAPoint(Graphics2D g2d) {
+		g2d.setColor(Color.RED);
+		g2d.setStroke(new BasicStroke(5));
+		g2d.drawLine(a, b, a, b);
+                g2d.drawLine(c, d, c, d);
+                       
+	}
+        
+
+
+
+	public void Axis(Graphics2D g2d) {
+		g2d.setColor(Color.GRAY);
+		g2d.setStroke(new BasicStroke(1));
+		for (int i = 0; i <= 80; i++) {
+			g2d.drawLine(5 * i, 0, 5 * i, 400);
+			g2d.drawLine(0, 5 * i, 400, 5 * i);
+		}
+		g2d.setStroke(new BasicStroke(2));
+		g2d.setColor(Color.BLACK);
+		g2d.drawLine(0, 200, 400, 200);
+		g2d.drawLine(200, 0, 200, 400);
+        }
+
+	public void mouseClicked(MouseEvent e) {
+
+	}
+        
+        // thuật toán DDA vẽ nét chấm gạch
+        
+        public void DDA(Graphics2D g2d){
+            
+            int dx,dy;
+            int xet=1;
+            float Xinc,Yinc,x,y,steps;
+            int tamx,tamy;
+            
+            if(a>c||b>d){
+            tamx=a;
+            a=c;
+            c=tamx;       
+            tamy=b;
+            b=d;
+            d=tamy;          
+            }            
+           
+            dy=d-b;
+            dx=c-a;
+            
+            g2d.setColor(Color.RED);
+            g2d.setStroke(new BasicStroke(5));
+            g2d.drawLine(a, b, a, b);
+            
+            
+            if(dy>dx){
+                steps=Math.abs(dy);
+            }
+            else{
+                steps=Math.abs(dx);
+            }
+            x=a;
+            y=b;
+            Yinc=dy/steps;
+            Xinc=dx/steps;
+            
+            while(steps!=0){
+                if(xet %2 != 0){
+                    //net gach
+                    for(int i=0;i<7;i++){
+                    steps--;
+                    x=x+Xinc;
+                    y=y+Yinc;
+                    g2d.setColor(Color.RED);
+                    g2d.setStroke(new BasicStroke(5));
+                    g2d.fillOval(Math.round(x), Math.round(y), 5, 5);
+                    
+                    }
+                    //khoang trang
+                   for(int i=0;i<6;i++){
+                    steps--;
+                    x=x+Xinc;
+                    y=y+Yinc; 
+                    }
+                    //net cham
+                    steps--;
+                    x=x+Xinc;
+                    y=y+Yinc;
+                    g2d.setColor(Color.RED);
+                    g2d.fillOval(Math.round(x),Math.round(y),5,5);// vẽ nét chấm   
+                        
+                    
+                }else{
+                    //khoang trang
+                  for(int i=0;i<6;i++){
+                    steps--;
+                    x=x+Xinc;
+                    y=y+Yinc; 
+                    }
+                }
+               xet++;  
+             }      
+}
+
+	public void mousePressed(MouseEvent e) {
+		if (e.getClickCount() == 2) {
+			Point p = e.getPoint();
+			a = (int) Math.round(e.getX());
+			b = (int) Math.round(p.getY());
+			if (a <= 400 && b <= 400) {
+//				System.out.println(x);
+//				System.out.println(y);
+				x1 = a / 5;
+				y1 = b / 5;
+				if (x1 <= 40)
+					x1 = x1 - 40;
+				else
+					x1 = x1 - 40;
+				if (y1 >= 40)
+					y1 = 40 - y1;
+				else
+					y1 = 40 - y1;
+				this.repaint();
+			}
+		}
+	}
+
+	public void mouseReleased(MouseEvent e) {
+
+	}
+
+	public void mouseEntered(MouseEvent e) {
+
+	}
+
+	public void mouseExited(MouseEvent e) {
+
+	}
+
+}
