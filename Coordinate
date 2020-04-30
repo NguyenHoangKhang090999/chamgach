@@ -1,0 +1,165 @@
+package ex1;
+
+/**
+ *
+ * @author LAPTOP ASUS
+ */
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import javax.swing.*;
+
+
+public class Coordinate implements ActionListener {
+
+	GraphicsDemo gd = new GraphicsDemo();
+
+        
+        
+	JFrame frame = new JFrame();
+	JLabel label1 = new JLabel();
+	JLabel label2 = new JLabel();
+	JLabel label3 = new JLabel();
+        JLabel label4 = new JLabel();
+        JLabel label5 = new JLabel();
+	JTextField tf1 = new JTextField();
+	JTextField tf2 = new JTextField();
+        JTextField tf3 = new JTextField();
+        JTextField tf4 = new JTextField();
+	JButton bt1 = new JButton();
+       
+
+	public Coordinate() {
+		// frame
+		frame.setSize(700, 700);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setTitle("Ex1 - NHOM 13");
+
+		
+                // o trong nhap so lieu
+		tf1.setBounds(70, 50, 120, 40);
+		tf1.setFocusable(true);
+		tf1.setText("");
+		tf1.setEditable(true);
+		
+		tf2.setBounds(70, 110, 120, 40);
+		tf2.setFocusable(true);
+		tf2.setText("");
+		tf2.setEditable(true);
+                
+                tf3.setBounds(70,170, 120, 40);
+		tf3.setFocusable(true);
+		tf3.setText("");
+		tf3.setEditable(true);
+                
+                tf4.setBounds(70, 230, 120, 40);
+		tf4.setFocusable(true);
+		tf4.setText("");
+		tf4.setEditable(true);
+                
+                
+		
+		label1.setBounds(10, 50, 50, 40);
+		label1.setEnabled(false);
+		label1.setText("X0: ");
+		label1.setFont(new Font("Ink Free", Font.BOLD, 13));
+
+		label2.setBounds(10, 110, 50, 40);
+		label2.setEnabled(false);
+		label2.setText("Y0: ");
+		label2.setFont(new Font("Ink Free", Font.BOLD, 13));
+                
+                label4.setBounds(10, 170, 50, 40);
+		label4.setEnabled(false);
+		label4.setText("X1: ");
+		label4.setFont(new Font("Ink Free", Font.BOLD, 13));
+                
+                label5.setBounds(10, 230, 50, 40);
+		label5.setEnabled(false);
+		label5.setText("Y1: ");
+		label5.setFont(new Font("Ink Free", Font.BOLD, 13));
+                
+
+		label3.setBounds(45, 290, 200, 30);
+		label3.setEnabled(false);
+		label3.setText("Limit: (-40,40)");
+		label3.setFont(new Font("Ink Free", Font.BOLD, 18));
+
+		bt1.setText("Draw!");
+		bt1.setBounds(70,340, 80, 40);
+		bt1.setBorder(BorderFactory.createBevelBorder(1));
+		bt1.setFocusable(false);
+		bt1.setFont(new Font("Ink Free", Font.BOLD, 18));
+                
+                
+		bt1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					
+					int a = Integer.parseInt(tf1.getText()) * 5;
+					int b = Integer.parseInt(tf2.getText()) * 5;
+                                        int c = Integer.parseInt(tf3.getText()) * 5;
+                                        int d = Integer.parseInt(tf4.getText()) * 5;
+                                        
+					if (a >= -200 && a <= 200 && b >= -200 && b <= 200) {
+						if (a <= 0)
+							a = 200 + a;
+						else
+							a = 200 + a;
+						if (b <= 0)
+							b = 200 - b;
+						else
+							b = 200 - b;
+                                                if (c <= 0)
+							c = 200 + c;
+						else
+							c = 200 + c;
+                                                if (d <= 0)
+							d = 200 - d;
+						else
+							d = 200 - d;
+						gd.a = a;
+						gd.b = b;
+                                                gd.c = c;
+                                                gd.d = d;
+						System.out.println(gd.a);
+						System.out.println(gd.b);
+                                                System.out.println(gd.c);
+						System.out.println(gd.d);
+						gd.repaint();
+					} 
+						else {
+						String message = "Vui long nhap dung dinh dang! ";
+						JOptionPane.showMessageDialog(new JFrame(), message, "Canh bao", JOptionPane.ERROR_MESSAGE);
+					}
+				} catch (Exception q) {
+					String message = "Vui long nhap dung dinh dang! ";
+					JOptionPane.showMessageDialog(new JFrame(), message, "Canh bao", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
+                
+                
+
+		frame.add(label3);
+		frame.add(label2);
+		frame.add(label1);
+                frame.add(label4);
+                frame.add(label5);
+                frame.add(tf3);
+                frame.add(tf4);
+		frame.add(tf2);
+		frame.add(tf1);
+		frame.add(bt1);
+		frame.add(gd);
+		frame.setVisible(true);
+	}
+
+	public void actionPerformed(ActionEvent e) {
+
+	}
+
+}
