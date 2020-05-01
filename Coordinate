@@ -16,6 +16,8 @@ import javax.swing.*;
 public class Coordinate implements ActionListener {
 
 	GraphicsDemo gd = new GraphicsDemo();
+        
+        
 
         
         
@@ -104,7 +106,7 @@ public class Coordinate implements ActionListener {
                                         int c = Integer.parseInt(tf3.getText()) * 5;
                                         int d = Integer.parseInt(tf4.getText()) * 5;
                                         
-					if (a >= -200 && a <= 200 && b >= -200 && b <= 200) {
+					if (a >= -200 && a <= 200 && b >= -200 && b <= 200 && c >= -200 && c <= 200 && d >= -200 && d <= 200) {
 						if (a <= 0)
 							a = 200 + a;
 						else
