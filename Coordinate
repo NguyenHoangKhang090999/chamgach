@@ -101,28 +101,28 @@ public class Coordinate implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					
-					int a = Integer.parseInt(tf1.getText()) * 5;
-					int b = Integer.parseInt(tf2.getText()) * 5;
-                                        int c = Integer.parseInt(tf3.getText()) * 5;
-                                        int d = Integer.parseInt(tf4.getText()) * 5;
+					int a = Integer.parseInt(tf1.getText()) * 10;
+					int b = Integer.parseInt(tf2.getText()) * 10;
+                                        int c = Integer.parseInt(tf3.getText()) * 10;
+                                        int d = Integer.parseInt(tf4.getText()) * 10;
                                         
-					if (a >= -200 && a <= 200 && b >= -200 && b <= 200 && c >= -200 && c <= 200 && d >= -200 && d <= 200) {
+					if (a >= -400 && a <= 400 && b >= -400 && b <= 400 && c >= -400 && c <= 400 && d >= -400 && d <= 400) {
 						if (a <= 0)
-							a = 200 + a;
+							a = 400 + a;
 						else
-							a = 200 + a;
+							a = 400 + a;
 						if (b <= 0)
-							b = 200 - b;
+							b = 400 - b;
 						else
-							b = 200 - b;
+							b = 400 - b;
                                                 if (c <= 0)
-							c = 200 + c;
+							c = 400 + c;
 						else
-							c = 200 + c;
+							c = 400 + c;
                                                 if (d <= 0)
-							d = 200 - d;
+							d = 400 - d;
 						else
-							d = 200 - d;
+							d = 400 - d;
 						gd.a = a;
 						gd.b = b;
                                                 gd.c = c;
@@ -165,5 +165,4 @@ public class Coordinate implements ActionListener {
 	}
 
 }
-
 
