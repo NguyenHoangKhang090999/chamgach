@@ -25,65 +25,63 @@ public class GraphicsDemo extends JPanel implements MouseListener {
 	}public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		this.setBackground(Color.WHITE);
-		this.setBounds(200, 0, 500, 500);
+		this.setBounds(200, 0, 800, 800);
 
-		label.setBounds(100, 410, 250, 40);
-		label.setText("Coordinate Axes (Double click to draw)");
-		this.add(label);
+		
 
 		Graphics2D g2d = (Graphics2D) g;
 
 		Axis(g2d);
 		this.addMouseListener(this);
-                
-		if (a % 5 == 1)
-			a = a - 1;
-		if (a % 5 == 2)
-			a = a - 2;
-		if (a % 5 == 3)
-			a = a + 2;
-		if (a % 5 == 4)
-			a = a + 1;
-
-		if (b % 5 == 1)
-			b= b - 1;
-		if (b % 5 == 2)
-			b = b - 2;
-		if (b % 5 == 3)
-			b = b + 2;
-		if (b % 5 == 4)
-			b = b + 1;
-                
-                if (c % 5 == 1)
-			c= c - 1;
-		if (c % 5 == 2)
-			c = c - 2;
-		if (c % 5 == 3)
-			c = c + 2;
-		if (c % 5 == 4)
-			c = c + 1;
-                
-                if (d % 5 == 1)
-			d= d - 1;
-		if (d % 5 == 2)
-			d = d - 2;
-		if (d % 5 == 3)
-			d = d + 2;
-		if (d % 5 == 4)
-			d = d + 1;
-                
-               
-              
-		if (a % 5 == 0 && b % 5 == 0 && c % 5 == 0 && d % 5 == 0) {
-			
-                      
-                    DDA(g2d); //GOI HAM VE CHAM GACH
-                    //muiten(g2d); // GOI HAM VE MUI TEN 
-                    //drawAPoint(g2d); //GOI HAM VE 2 DIEM TREN HE TOA DO
-                      
-                       
-                      
-		}
+                DDA(g2d);
+//		if (a % 5 == 1)
+//			a = a - 1;
+//		if (a % 5 == 2)
+//			a = a - 2;
+//		if (a % 5 == 3)
+//			a = a + 2;
+//		if (a % 5 == 4)
+//			a = a + 1;
+//
+//		if (b % 5 == 1)
+//			b= b - 1;
+//		if (b % 5 == 2)
+//			b = b - 2;
+//		if (b % 5 == 3)
+//			b = b + 2;
+//		if (b % 5 == 4)
+//			b = b + 1;
+//                
+//                if (c % 5 == 1)
+//			c= c - 1;
+//		if (c % 5 == 2)
+//			c = c - 2;
+//		if (c % 5 == 3)
+//			c = c + 2;
+//		if (c % 5 == 4)
+//			c = c + 1;
+//                
+//                if (d % 5 == 1)
+//			d= d - 1;
+//		if (d % 5 == 2)
+//			d = d - 2;
+//		if (d % 5 == 3)
+//			d = d + 2;
+//		if (d % 5 == 4)
+//			d = d + 1;
+//                
+//               
+//              
+//		if (a % 5 == 0 && b % 5 == 0 && c % 5 == 0 && d % 5 == 0) {
+//			
+//                      
+//                    DDA(g2d); //GOI HAM VE CHAM GACH
+//                    //muiten(g2d); // GOI HAM VE MUI TEN 
+//                    //drawAPoint(g2d); //GOI HAM VE 2 DIEM TREN HE TOA DO
+//                      
+//                       
+//                      
+//		}
 
 	}
         
@@ -103,13 +101,13 @@ public class GraphicsDemo extends JPanel implements MouseListener {
 		g2d.setColor(Color.GRAY);
 		g2d.setStroke(new BasicStroke(1));
 		for (int i = 0; i <= 80; i++) {
-			g2d.drawLine(5 * i, 0, 5 * i, 400);
-			g2d.drawLine(0, 5 * i, 400, 5 * i);
+			g2d.drawLine(10 * i, 0, 10 * i, 800);
+			g2d.drawLine(0, 10 * i, 800, 10 * i);
 		}
 		g2d.setStroke(new BasicStroke(2));
 		g2d.setColor(Color.BLACK);
-		g2d.drawLine(0, 200, 400, 200);
-		g2d.drawLine(200, 0, 200, 400);
+		g2d.drawLine(0, 400, 800, 400);
+		g2d.drawLine(400, 0, 400, 800);
         }
 
 	public void mouseClicked(MouseEvent e) {
@@ -176,9 +174,7 @@ public class GraphicsDemo extends JPanel implements MouseListener {
             dy=d-b;
             dx=c-a;
             
-            g2d.setColor(Color.RED);
-            g2d.setStroke(new BasicStroke(5));
-            g2d.drawLine(a, b, a, b);
+            
             
             
             if(dy>dx){
@@ -195,17 +191,17 @@ public class GraphicsDemo extends JPanel implements MouseListener {
             while(steps!=0){
                 if(xet %2 != 0){
                     //net gach
-                    for(int i=0;i<7;i++){
+                    for(int i=0;i<5;i++){
                     steps--;
                     x=x+Xinc;
                     y=y+Yinc;
                     g2d.setColor(Color.RED);
                     g2d.setStroke(new BasicStroke(5));
-                    g2d.fillOval(Math.round(x), Math.round(y), 5, 5);
+                    g2d.drawLine(Math.round(x), Math.round(y), Math.round(x), Math.round(y));
                     
                     }
                     //khoang trang
-                   for(int i=0;i<6;i++){
+                   for(int i=0;i<2;i++){
                     steps--;
                     x=x+Xinc;
                     y=y+Yinc; 
@@ -215,12 +211,13 @@ public class GraphicsDemo extends JPanel implements MouseListener {
                     x=x+Xinc;
                     y=y+Yinc;
                     g2d.setColor(Color.RED);
-                    g2d.fillOval(Math.round(x),Math.round(y),5,5);// vẽ nét chấm   
+                    g2d.setStroke(new BasicStroke(5));
+                    g2d.drawLine(Math.round(x), Math.round(y), Math.round(x), Math.round(y));;// vẽ nét chấm   
                         
                     
                 }else{
                     //khoang trang
-                  for(int i=0;i<6;i++){
+                  for(int i=0;i<2;i++){
                     steps--;
                     x=x+Xinc;
                     y=y+Yinc; 
