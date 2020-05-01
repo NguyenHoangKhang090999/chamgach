@@ -1,11 +1,23 @@
 package ex1;
 
+import java.awt.EventQueue;
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author LAPTOP ASUS
  */
+//NEW
 public class Main {
 	public static void main(String []args) {
-		Coordinate coordinate = new Coordinate();
+            EventQueue.invokeLater(new Runnable() {
+         
+            @Override
+            public void run() {
+                Coordinate coordinate = new Coordinate();
+                
+		
 	}
-}
+});
+                    }
+}                
