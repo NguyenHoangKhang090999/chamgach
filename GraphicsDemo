@@ -33,13 +33,11 @@ public class GraphicsDemo extends JPanel implements MouseListener {
 
 		Axis(g2d);
 		this.addMouseListener(this);
-                //DDA(g2d);
+                DDA(g2d);
                 //DDA1(g2d);
-                duongthang(g2d);// goi ham ve mui ten 
-                
-
-
-	}
+                //Vemuiten(g2d);// goi ham ve mui ten 
+               // Hinhchunhat(g2d,a,b,c,d);
+ }
         
         	public void drawAPoint(Graphics2D g2d) {
 		g2d.setColor(Color.RED);
@@ -49,6 +47,21 @@ public class GraphicsDemo extends JPanel implements MouseListener {
                 
                        
 	}
+                
+                
+        public void Hinhchunhat(Graphics g2d,int x1,int y1,int x2,int y2){
+       
+            duongthang((Graphics2D) g2d,x1,y1,x1,y2);
+            duongthang((Graphics2D) g2d,x1,y1,x2,y1);
+            duongthang((Graphics2D) g2d,x1,y2,x2,y2);
+            duongthang((Graphics2D) g2d,x2,y1,x2,y2);
+//                g2d.drawLine(x1,y1,x2,y1);
+//                g2d.drawLine(x1,y1,x1,y2);
+//                g2d.drawLine(x2,y2,x1,y2);
+//                g2d.drawLine(x2,y2,x2,y1);
+        
+    }
+
         
 
 
@@ -69,12 +82,59 @@ public class GraphicsDemo extends JPanel implements MouseListener {
 	public void mouseClicked(MouseEvent e) {
 
 	}
+        public void duongthang(Graphics2D g2d,int x1,int y1,int x2,int y2){
+            int dx,dy;
+            int xet=1;
+            float Xinc,Yinc,x,y,steps;
+            int tamx,tamy;
+            //MidpointLine(g2d,c,d,c-45,d+30);
+           
+            if(x1>x2||y1>y2){
+            tamx=x1;
+            x1=x2;
+            x2=tamx;       
+            tamy=y1;
+            y1=y2;
+            y2=tamy;          
+            }         
+            
+            
+            dy=y2-y1;
+            dx=x2-x1;
+            
+            if(dy>dx){
+                steps=Math.abs(dy);
+            }
+            else{
+                steps=Math.abs(dx);
+            }
+            x=x1;
+            y=y1;
+            Yinc=dy/steps;
+            Xinc=dx/steps;
+            
+            while(steps!=0){
+                if(xet %2 != 0){
+                    //net gach
+                    for(int i=0;i<15;i++){
+                    steps--;
+                    x=x+Xinc;
+                    y=y+Yinc;
+                    g2d.setColor(Color.BLUE);
+                    g2d.fillOval(Math.round(x), Math.round(y), 5, 5);
+                    }   
+                }
+                xet++;
+            }
+            
+        
+        }
         
         
         
         
         
-        public void duongthang(Graphics2D g2d){
+        public void Vemuiten(Graphics2D g2d){
              //Truong hop 0<m<1 && x1<x2 && y1<y2
           //ve doan thang 
             int dx,dy;
@@ -214,9 +274,9 @@ public class GraphicsDemo extends JPanel implements MouseListener {
                 xet++;
             }
             if(a == c){
-            muiten7(g2d,c,d,c,d);
-            muiten8(g2d,c,d,c,d);
-            muiten9(g2d,c,d,c,d); 
+            muiten10(g2d,c,d,c,d);
+            muiten11(g2d,c,d,c,d);
+            muiten12(g2d,c,d,c,d); 
             }
             }
         }
@@ -643,6 +703,140 @@ public class GraphicsDemo extends JPanel implements MouseListener {
            }
         
         }
+        
+        public void muiten10(Graphics2D g2d,int q1,int q2,int q3,int q4){
+          
+            int dx,dy;
+            int xet=1;
+            float Xinc,Yinc,x,y,steps;
+            int h = 30;
+            int a = 15;
+           
+            
+            // ve canh tren 
+           
+            q3 = q3 - a;
+            q4 = q4 + h;
+                    
+            dy=q4-q2;
+            dx=q3-q1;
+            
+            if(dy>dx){
+                steps=Math.abs(dy);
+            }
+            else{
+                steps=Math.abs(dx);
+            }
+            x = q1;
+            y = q2;
+            Yinc=dy/steps;
+            Xinc=dx/steps;
+            
+            while(steps!=0){
+                if(xet %2 != 0){
+                    //net gach
+                    for(int i=0;i<15;i++){
+                    steps--;
+                    x=x+Xinc;
+                    y=y+Yinc;
+                    g2d.setColor(Color.BLUE);
+                    g2d.fillOval(Math.round(x), Math.round(y), 5, 5);
+                    }   
+                }
+                xet++;
+            }
+        
+        }
+        
+        public void muiten11(Graphics2D g2d,int q1,int q2,int q3,int q4){
+          
+            int dx,dy;
+            int xet=1;
+            float Xinc,Yinc,x,y,steps;
+            int h = 30;
+            int a = 15;
+         
+            
+            // ve canh tren 
+           
+            q3 = q3 + a;
+            q4 = q4 + h;
+                    
+            dy=q4-q2;
+            dx=q3-q1;
+            
+            if(dy>dx){
+                steps=Math.abs(dy);
+            }
+            else{
+                steps=Math.abs(dx);
+            }
+            x = q1;
+            y = q2;
+            Yinc=dy/steps;
+            Xinc=dx/steps;
+            
+            while(steps!=0){
+                if(xet %2 != 0){
+                    //net gach
+                    for(int i=0;i<15;i++){
+                    steps--;
+                    x=x+Xinc;
+                    y=y+Yinc;
+                    g2d.setColor(Color.BLUE);
+                    g2d.fillOval(Math.round(x), Math.round(y), 5, 5);
+                    }   
+                }
+                xet++;
+            }
+       
+        }
+        
+        public void muiten12(Graphics2D g2d,int q1,int q2,int q3,int q4){
+          
+            int dx,dy;
+            int xet=1;
+            float Xinc,Yinc,x,y,steps;
+            int h = 30;
+            int a = 15;
+            
+            
+            // ve canh tren 
+            q1 = q1 + a;
+            q2 = q2 + h;
+            q3 = q3 - a;
+            q4 = q4 + h;
+                    
+            dy=q4-q2;
+            dx=q3-q1;
+            
+            if(dy>dx){
+                steps=Math.abs(dy);
+            }
+            else{
+                steps=Math.abs(dx);
+            }
+            x = q1;
+            y = q2;
+            Yinc=dy/steps;
+            Xinc=dx/steps;
+            
+            while(steps!=0){
+                if(xet %2 != 0){
+                    //net gach
+                    for(int i=0;i<15;i++){
+                    steps--;
+                    x=x+Xinc;
+                    y=y+Yinc;
+                    g2d.setColor(Color.BLUE);
+                    g2d.fillOval(Math.round(x), Math.round(y), 5, 5);
+                    }   
+                }
+                xet++;
+           }
+        
+        }
+
                 
              
             
@@ -814,6 +1008,9 @@ public class GraphicsDemo extends JPanel implements MouseListener {
             }
             
         }
+        
+        
+                
 
 	public void mousePressed(MouseEvent e) {
 		if (e.getClickCount() == 2) {
@@ -850,5 +1047,6 @@ public class GraphicsDemo extends JPanel implements MouseListener {
 
 	}
 
+   
     
 }
