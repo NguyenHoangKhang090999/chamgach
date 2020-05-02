@@ -36,7 +36,7 @@ public class Coordinate implements ActionListener {
 
 	public Coordinate() {
 		// frame
-		frame.setSize(700, 700);
+		frame.setSize(1520, 1080);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Ex1 - NHOM 13");
 
@@ -87,7 +87,7 @@ public class Coordinate implements ActionListener {
 
 		label3.setBounds(45, 290, 200, 30);
 		label3.setEnabled(false);
-		label3.setText("Limit: (-40,40)");
+		label3.setText("Limit: (-25,25)");
 		label3.setFont(new Font("Ink Free", Font.BOLD, 18));
 
 		bt1.setText("Draw!");
@@ -101,28 +101,28 @@ public class Coordinate implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					
-					int a = Integer.parseInt(tf1.getText()) * 10;
-					int b = Integer.parseInt(tf2.getText()) * 10;
-                                        int c = Integer.parseInt(tf3.getText()) * 10;
-                                        int d = Integer.parseInt(tf4.getText()) * 10;
+					int a = Integer.parseInt(tf1.getText()) * 15;
+					int b = Integer.parseInt(tf2.getText()) * 15;
+                                        int c = Integer.parseInt(tf3.getText()) * 15;
+                                        int d = Integer.parseInt(tf4.getText()) * 15;
                                         
-					if (a >= -400 && a <= 400 && b >= -400 && b <= 400 && c >= -400 && c <= 400 && d >= -400 && d <= 400) {
+					if (a >= -375 && a <= 375 && b >= -375 && b <= 375 && c >= -375 && c <= 375 && d >= -375 && d <= 375) {
 						if (a <= 0)
-							a = 400 + a;
+							a = 375 + a;
 						else
-							a = 400 + a;
+							a = 375 + a;
 						if (b <= 0)
-							b = 400 - b;
+							b = 375 - b;
 						else
-							b = 400 - b;
+							b = 375 - b;
                                                 if (c <= 0)
-							c = 400 + c;
+							c = 375 + c;
 						else
-							c = 400 + c;
+							c = 375 + c;
                                                 if (d <= 0)
-							d = 400 - d;
+							d = 375 - d;
 						else
-							d = 400 - d;
+							d = 375 - d;
 						gd.a = a;
 						gd.b = b;
                                                 gd.c = c;
